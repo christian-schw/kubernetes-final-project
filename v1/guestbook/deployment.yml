@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook
+  name: myguestbook
   labels:
-    app: guestbook 
+    app: myguestbook 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: guestbook
+      app: myguestbook
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -17,12 +17,12 @@ spec:
   template:
     metadata:
       labels:
-        app: guestbook
+        app: myguestbook
     spec:
       containers:
-      - image: us.icr.io/<your sn labs namespace>/guestbook:v1
+      - image: us.icr.io/sn-labs-christians21/myguestbook:v1
         imagePullPolicy: Always
-        name: guestbook
+        name: myguestbook
         ports:
         - containerPort: 3000
           name: http
@@ -30,5 +30,4 @@ spec:
           limits:
             cpu: 50m
           requests:
-            cpu: 20m  
-  replicas: 1
+            cpu: 20m
