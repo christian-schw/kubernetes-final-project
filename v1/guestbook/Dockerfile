@@ -7,6 +7,8 @@ RUN go build -o main main.go
 
 
 FROM ubuntu:18.04
+# Set here working directory as well. Otherwise, build fails.
+WORKDIR /app
 COPY --from=builder /app/main /app/guestbook
 COPY public/index.html /app/public/index.html
 COPY public/script.js /app/public/script.js
