@@ -82,34 +82,36 @@ I therefore explain my completed tasks in the project below.<br>
 
 ### Build and deploy the v1 application to Kubernetes
 Setup of the environment variable namespace (user name is already predefined in IBM Cloud IDE):<br>
+TODO: Insert namespace image<br>
 
-![setup env var](https://github.com/user-attachments/assets/1614d19f-eb82-478a-8e7a-6a246604ca75)
+Missing commands have been added to the Dockerfile in ./v1/guestbook:<br>
+TODO: Insert image dockerfile<br>
 
 The image was then built using the Dockerfile.<br>
 
 ```
-docker build . -t us.icr.io/$MY_NAMESPACE/myapp:v1
+docker build . -t us.icr.io/$MY_NAMESPACE/myguestbook:v1
 ```
 
 The -t flag was used to set the name and tag of the image according to the IBM course naming convention.<br>
 Result:<br>
 
-![docker images](https://github.com/user-attachments/assets/71d10198-9fa1-4c18-9242-115451391641)
+TODO: Insert docker images<br>
 
 After the image has been built, it is pushed into the IBM Container Registry:<br>
 
 ```
-docker push us.icr.io/$MY_NAMESPACE/myapp:v1 
+docker push us.icr.io/$MY_NAMESPACE/myguestbook:v1 
 ```
 
 Result:<br>
 
-![ibmcloud cr images](https://github.com/user-attachments/assets/1c94e442-be79-4afc-b067-055765dcbf40)
+TODO: Insert image cloud cr images<br>
 
 The K8s object deployment is then created.<br>
 Here the placeholder of the namespace must be replaced with my namespace:<br>
 
-![deployment yml](https://github.com/user-attachments/assets/24280b7f-1651-4ace-a9d4-6d593c600d2d)
+TODO: Insert namespace image<br>
 
 Apply the deployment:<br>
 
@@ -119,12 +121,12 @@ kubectl apply -f deployment.yml
 
 Verification of the deployment:<br>
 
-![kubectl pods deployment yml](https://github.com/user-attachments/assets/7a6c8bfb-be3b-45dc-acd3-1d2c51fb85da)
+TODO: Insert image verification deployment<br>
 
 Now start application on port-forward:<br>
 
 ```
-kubectl port-forward deployment.apps/myapp 3000:3000 
+kubectl port-forward deployment.apps/myguestbook 3000:3000 
 ```
 
 Port forwarding in Kubernetes is a mechanism that allows you to access services running within a Kubernetes cluster from your local machine or another external system.<br>
@@ -132,7 +134,12 @@ It's useful for debugging, testing, and accessing services during development.<b
 <br>
 Output of application:<br>
 
-![application output](https://github.com/user-attachments/assets/bca4a53b-a9d8-4392-ab07-e8aa32760795)
+TODO: Insert image output application<br>
+
+It is possible to add guests or entries in this application.<br>
+Fill in the text field, press the "Submit" button and the entry is added and appears above the text field:<br>
+
+TODO: Insert image adding entries application<br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
