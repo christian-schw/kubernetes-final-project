@@ -155,7 +155,7 @@ A Horizontal Pod Autoscaler with the following properties is applied to the prev
 - CPU Percent: 5%
 - Minimum number of pods: 1
 - Maximum number of pods: 10
-<br>
+
 This results in the following command:<br>
 
 ```
