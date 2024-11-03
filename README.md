@@ -177,14 +177,60 @@ Result:<br>
 
 TODO: Insert image watch hpa<br>
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
 <br>
 
 ### Rolling Updates and Rollbacks
-xxx<br>
+Changes are now being made to the current version (v1).<br>
+The updated version will then be deployed.<br>
+Changes:
+- Title and h1 in index.html are adjusted (e.g. "Guestbook - v1" -> "Guestbook - v2")
+- CPU in deployment.yml is adjusted (e. g. 50m -> 5m)
+<br>
+The image is rebuilt and pushed into the IBM Container Registry.<br>
+In addition, changed deployment.yml is applied.<br>
+If the application is made available with the help of port-forwarding and visited, the new change is visible:<br>
+
+TODO: Insert image output application v2<br>
+
+The application has been updated. A rollback of the deployment object is now being performed.<br>
+The following command is executed to view the deployment rollout history:<br>
+
+```
+kubectl rollout history deployment/myguestbook
+```
+
+Result:<br>
+
+TODO: Insert image history deployment<br>
+
+To obtain more information about the version 1 deployment object (e.g. replica sets used), the following command is executed:<br>
+
+```
+kubectl rollout history deployments myguestbook --revision=1
+```
+
+Result:<br>
+
+TODO: Insert image details rollout version1<br>
+
+If you compare the hash above with the hash of the “kubectl get rs” command, it becomes clear that the ReplicaSet of version 1 is not active.<br>
+Instead, the ReplicaSet of version 2 is active.<br>
+
+TODO: Insert image rs rollout v2<br>
+
+The version / revision is set to 1 again:<br>
+
+```
+kubectl rollout undo deployment/myguestbook --to-revision=1
+```
+
+ReplicaSet version 2 is scaled down and ReplicaSet version 1 is scaled up:<br>
+
+TODO: Insert image undo deployment rs<br>
+
+Conclusion: Rollback of the deployment object was carried out successfully.<br>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
 <br>
