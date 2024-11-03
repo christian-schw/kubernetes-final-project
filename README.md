@@ -146,7 +146,39 @@ TODO: Insert image adding entries application<br>
 <br>
 
 ### Autoscale application using HPA
-xxx<br>
+A Horizontal Pod Autoscaler with the following properties is applied to the previously created deployment object "myguestbook":
+- CPU Percent: 5%
+- Minimum number of pods: 1
+- Maximum number of pods: 10
+This results in the following command:<br>
+
+```
+kubectl autoscale deployment myguestbook --cpu-percent=5 --min=1 --max=10
+```
+
+The created HPA:<br>
+
+TODO: Insert image hpa created<br>
+
+However, there is currently no load.<br>
+In the IBM project, the following command is used to generate load so that the effect of the HPA can be seen (URL comes from the Kubernetes generated application. Port forwarding must also be active for this - see section "Build and deploy the v1 application to Kubernetes" above):<br>
+
+```
+kubectl run -i --tty load-generator --rm --image=busybox:1.36.0 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- https://christians21-3000.theiaopenshiftnext-1-labs-prod-theiaopenshift-4-tor01.proxy.cognitiveclass.ai/; done"
+```
+
+The following command can now be used to check the status of the HPA:<br>
+
+```
+kubectl get hpa myguestbook --watch
+```
+
+Result:<br>
+
+TODO: Insert image watch hpa<br>
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
 <br>
