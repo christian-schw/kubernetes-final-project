@@ -11,6 +11,9 @@ The application consists of a web front end which will have a text input where y
 Kubernetes Deployments and Pods are created for all of these.<br>
 Then Horizontal Pod Scaling is applied to the Guestbook application.<br>
 Rolling Updates and Rollbacks are performed as well.<br>
+
+![adding entries application](https://github.com/user-attachments/assets/99d22cfb-7513-43ef-8db9-3ed624de4ecd)
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -82,10 +85,12 @@ I therefore explain my completed tasks in the project below.<br>
 
 ### Build and deploy the v1 application to Kubernetes
 Setup of the environment variable namespace (user name is already predefined in IBM Cloud IDE):<br>
-TODO: Insert namespace image<br>
+
+![set namespace](https://github.com/user-attachments/assets/e9260c81-83ab-457d-9548-b85a9dc8a290)
 
 Missing commands have been added to the Dockerfile in ./v1/guestbook:<br>
-TODO: Insert image dockerfile<br>
+
+![fill missing dockerfile commands](https://github.com/user-attachments/assets/3dd1b5cd-75db-437c-9514-554e58159e3a)
 
 The image was then built using the Dockerfile.<br>
 
@@ -96,7 +101,7 @@ docker build . -t us.icr.io/$MY_NAMESPACE/myguestbook:v1
 The -t flag was used to set the name and tag of the image according to the IBM course naming convention.<br>
 Result:<br>
 
-TODO: Insert docker images<br>
+![verification docker images](https://github.com/user-attachments/assets/58b0e5a7-ee59-4be5-8320-5f077c98c6f7)
 
 After the image has been built, it is pushed into the IBM Container Registry:<br>
 
@@ -106,12 +111,12 @@ docker push us.icr.io/$MY_NAMESPACE/myguestbook:v1
 
 Result:<br>
 
-TODO: Insert image cloud cr images<br>
+![verification cloud cr images](https://github.com/user-attachments/assets/52e36c2f-f92c-4de0-9dab-9082925d5149)
 
 The K8s object deployment is then created.<br>
 Here the placeholder of the namespace must be replaced with my namespace:<br>
 
-TODO: Insert namespace image<br>
+![insert namespace](https://github.com/user-attachments/assets/cde3e4a1-5115-4bd7-889f-144e5c057b1d)
 
 Apply the deployment:<br>
 
@@ -121,7 +126,7 @@ kubectl apply -f deployment.yml
 
 Verification of the deployment:<br>
 
-TODO: Insert image verification deployment<br>
+![verification deployment](https://github.com/user-attachments/assets/a6ee6f54-f74d-4a66-9d6a-fd8f0e193b59)
 
 Now start application on port-forward:<br>
 
@@ -134,12 +139,12 @@ It's useful for debugging, testing, and accessing services during development.<b
 <br>
 Output of application:<br>
 
-TODO: Insert image output application<br>
+![output application](https://github.com/user-attachments/assets/cbe76944-8ea4-4280-bee3-137d2d1b5590)
 
 It is possible to add guests or entries in this application.<br>
 Fill in the text field, press the "Submit" button and the entry is added and appears above the text field:<br>
 
-TODO: Insert image adding entries application<br>
+![adding entries application](https://github.com/user-attachments/assets/c595b354-f727-40d6-83da-9e40baa95876)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
@@ -158,7 +163,7 @@ kubectl autoscale deployment myguestbook --cpu-percent=5 --min=1 --max=10
 
 The created HPA:<br>
 
-TODO: Insert image hpa created<br>
+![hpa created](https://github.com/user-attachments/assets/ce07caeb-6ae6-4af5-8fc1-b34ace843ee1)
 
 However, there is currently no load.<br>
 In the IBM project, the following command is used to generate load so that the effect of the HPA can be seen (URL comes from the Kubernetes generated application. Port forwarding must also be active for this - see section "Build and deploy the v1 application to Kubernetes" above):<br>
@@ -175,7 +180,7 @@ kubectl get hpa myguestbook --watch
 
 Result:<br>
 
-TODO: Insert image watch hpa<br>
+![autoscale watch](https://github.com/user-attachments/assets/2460ad1c-4a2f-42c9-9793-b9cf4ca2a61a)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
@@ -192,7 +197,7 @@ The image is rebuilt and pushed into the IBM Container Registry.<br>
 In addition, changed deployment.yml is applied.<br>
 If the application is made available with the help of port-forwarding and visited, the new change is visible:<br>
 
-TODO: Insert image output application v2<br>
+![output application v2](https://github.com/user-attachments/assets/7bb2029d-8080-447d-b325-efd57f44de6e)
 
 The application has been updated. A rollback of the deployment object is now being performed.<br>
 The following command is executed to view the deployment rollout history:<br>
@@ -203,7 +208,7 @@ kubectl rollout history deployment/myguestbook
 
 Result:<br>
 
-TODO: Insert image history deployment<br>
+![history rollouts](https://github.com/user-attachments/assets/13c28567-53da-404c-91d7-07d1c1f73b7f)
 
 To obtain more information about the version 1 deployment object (e.g. replica sets used), the following command is executed:<br>
 
@@ -213,12 +218,12 @@ kubectl rollout history deployments myguestbook --revision=1
 
 Result:<br>
 
-TODO: Insert image details rollout version1<br>
+![information about rollout version 1](https://github.com/user-attachments/assets/a24fca51-949d-4b08-9d2f-c47483cc4960)
 
 If you compare the hash above with the hash of the “kubectl get rs” command, it becomes clear that the ReplicaSet of version 1 is not active.<br>
 Instead, the ReplicaSet of version 2 is active.<br>
 
-TODO: Insert image rs rollout v2<br>
+![replicasets rollout v2](https://github.com/user-attachments/assets/b33158db-a66c-42f7-a9b9-0f4c29baf2c0)
 
 The version / revision is set to 1 again:<br>
 
@@ -228,7 +233,7 @@ kubectl rollout undo deployment/myguestbook --to-revision=1
 
 ReplicaSet version 2 is scaled down and ReplicaSet version 1 is scaled up:<br>
 
-TODO: Insert image undo deployment rs<br>
+![undo deployment version 2 rs](https://github.com/user-attachments/assets/45cb769f-8034-4900-b274-5c61e0877058)
 
 Conclusion: Rollback of the deployment object was carried out successfully.<br>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
