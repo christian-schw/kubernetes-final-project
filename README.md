@@ -6,10 +6,11 @@ This repository was created as part of IBM's "Introduction to Containers, Kubern
 It's a project about Kubernetes using Docker.<br>
 Much of the code was cloned from the IBM repository: https://github.com/ibm-developer-skills-network/guestbook<br>
 <br>
-Guestbook is a simple web application that we will build and deploy with Docker and Kubernetes.<br>
+Guestbook is a simple web application that is built and deployed with Docker and Kubernetes.<br>
 The application consists of a web front end which will have a text input where you can enter any text and submit.<br>
-For all of these we will create Kubernetes Deployments and Pods.<br>
-Then we will apply Horizontal Pod Scaling to the Guestbook application and finally work on Rolling Updates and Rollbacks.<br>
+Kubernetes Deployments and Pods are created for all of these.<br>
+Then Horizontal Pod Scaling is applied to the Guestbook application.<br>
+Rolling Updates and Rollbacks are performed as well.<br>
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
