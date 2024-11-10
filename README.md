@@ -2,22 +2,11 @@
 <a id="readme-top"></a>
 
 # Build and Deploy a Simple Guestbook Application
-This repository was created as part of IBM's "Introduction to Containers, Kubernetes and OpenShift" course.<br>
-It's a project about Kubernetes using Docker.<br>
-Much of the code was cloned from the IBM repository: https://github.com/ibm-developer-skills-network/guestbook<br>
-<br>
-Guestbook is a simple web application that is built and deployed with Docker and Kubernetes.<br>
-The application consists of a web front end which will have a text input where you can enter any text and submit.<br>
-Kubernetes Deployments and Pods are created for all of these.<br>
-Then Horizontal Pod Scaling is applied to the Guestbook application.<br>
-Rolling Updates and Rollbacks are performed as well.<br>
-
-![adding entries application](https://github.com/user-attachments/assets/99d22cfb-7513-43ef-8db9-3ed624de4ecd)
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li><a href="#introduction">Introduction</a></li>
     <li>
       <a href="#course-information">Course Information</a>
     </li>
@@ -43,6 +32,23 @@ Rolling Updates and Rollbacks are performed as well.<br>
 <br>
 
 
+## Introduction
+This repository was created as part of IBM's "Introduction to Containers, Kubernetes and OpenShift" course.<br>
+It's a project about Kubernetes using Docker.<br>
+Much of the code was cloned from the IBM repository: https://github.com/ibm-developer-skills-network/guestbook<br>
+<br>
+Guestbook is a simple web application that is built and deployed with Docker and Kubernetes.<br>
+The application consists of a web front end which will have a text input where you can enter any text and submit.<br>
+Kubernetes Deployments and Pods are created for all of these.<br>
+Then Horizontal Pod Scaling is applied to the Guestbook application.<br>
+Rolling Updates and Rollbacks are performed as well.<br>
+
+![adding entries application](https://github.com/user-attachments/assets/99d22cfb-7513-43ef-8db9-3ed624de4ecd)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<br>
+<br>
+
 
 ## Course Information
 Title: Introduction to Containers, Kubernetes and OpenShift<br>
@@ -51,7 +57,6 @@ Course Provider: IBM<br>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <br>
 <br>
-
 
 
 ## Information about the Project
